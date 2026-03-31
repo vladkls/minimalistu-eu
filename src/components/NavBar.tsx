@@ -2,14 +2,14 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useBookingModal } from "@/components/BookingModalProvider";
 
-const HUBSPOT_LINK =
-  "https://meetings-eu1.hubspot.com/vlad-calus/round-robin-consultanta";
 const CARTE_LINK =
   "https://carturesti.ro/carte/independenta-financiara-in-7-pasi-3211453017";
 
 export function NavBar() {
   const [open, setOpen] = useState(false);
+  const { openModal } = useBookingModal();
 
   return (
     <nav className="sticky top-0 z-50 bg-cream/80 backdrop-blur-md border-b border-border">
@@ -39,14 +39,12 @@ export function NavBar() {
             Carte{" "}
             <span className="text-text-muted text-xs">↗</span>
           </a>
-          <a
-            href={HUBSPOT_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-5 py-2 bg-burgundy text-white text-sm font-semibold rounded-lg hover:bg-burgundy-light transition-colors"
+          <button
+            onClick={openModal}
+            className="inline-flex items-center px-5 py-2 bg-burgundy text-white text-sm font-semibold rounded-lg hover:bg-burgundy-light transition-colors cursor-pointer"
           >
             Programează un audit →
-          </a>
+          </button>
         </div>
 
         {/* Mobile hamburger */}
@@ -85,14 +83,15 @@ export function NavBar() {
           >
             Carte ↗
           </a>
-          <a
-            href={HUBSPOT_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-5 py-3 bg-burgundy text-white text-sm font-semibold rounded-lg"
+          <button
+            onClick={() => {
+              setOpen(false);
+              openModal();
+            }}
+            className="inline-flex items-center justify-center px-5 py-3 bg-burgundy text-white text-sm font-semibold rounded-lg cursor-pointer"
           >
             Programează un audit →
-          </a>
+          </button>
         </div>
       )}
     </nav>

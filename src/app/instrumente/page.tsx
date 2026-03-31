@@ -8,9 +8,5 @@ const MinimalistuTools = dynamic(
 );
 
 export default function InstrumentePage() {
-  return (
-    <div className="pt-0">
-      <MinimalistuTools />
-    </div>
-  );
+  return <MinimalistuTools />;
 }

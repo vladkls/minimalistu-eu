@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, useCallback, useMemo } from "react"
 
 // ═══════════════════════════════════════════════════════════════
 // MINIMALISTU FINANCE TOOLS SUITE v4
-// Brand: LT Wealth Foundation x Minimalistu
+// Brand: Minimalistu
 // Tools: 1) Costul de Oportunitate 2) Dobanda Compusa 3) Calculator FIRE
 // ═══════════════════════════════════════════════════════════════
 
@@ -114,7 +114,7 @@ const TOOLS = [
   { id: "fire", name: "Calculator FIRE", icon: "\uD83D\uDD25", ready: true, desc: "Când devii liber financiar" },
   { id: "xray", name: "Portfolio X-Ray", icon: "\uD83D\uDD0D", ready: true, desc: "Analizează-ți portofoliul" },
   { id: "funds", name: "Costuri Fonduri", icon: "\uD83D\uDCB8", ready: true, desc: "Fond activ vs ETF" },
-  { id: "alpha", name: "Avantajul LT Wealth", icon: "\uD83C\uDFC6", ready: true, desc: "Impactul +3% pe an" },
+  { id: "alpha", name: "Avantajul Consultanței", icon: "\uD83C\uDFC6", ready: true, desc: "Impactul +3% pe an" },
   { id: "rentvsbuy", name: "Chirie vs Cumpărare", icon: "\uD83C\uDFE0", ready: true, desc: "Costul real al proprietății" },
   { id: "emergency", name: "Fond de Urgență", icon: "🛡️", ready: true, desc: "Cât ai nevoie pentru urgențe" },
   { id: "risk", name: "Toleranță la Risc", icon: "🧭", ready: true, desc: "Descoperă-ți profilul de risc" },
@@ -129,7 +129,7 @@ function NavBar({ active, onSelect, presenter, onToggle, onAbout }) {
   return (
     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: presenter ? "16px 32px" : "12px 20px", background: T.burgundy, borderRadius: `${T.radius}px ${T.radius}px 0 0`, fontFamily: T.font, flexWrap: "wrap", gap: 8 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-        <span style={{ color: "#fff", fontSize: presenter ? 22 : 18, fontFamily: T.fontDisplay, fontWeight: 400 }}>lt<span style={{ color: T.amber }}>.</span>w</span>
+        <a href="/" style={{ color: "#fff", fontSize: presenter ? 14 : 12, fontFamily: T.font, fontWeight: 500, textDecoration: "none", opacity: 0.8, display: "flex", alignItems: "center", gap: 6 }}>← Minimalistu.eu</a>
         <div className="m-nav-label" style={{ width: 1, height: 20, background: "rgba(255,255,255,0.15)" }} />
         <span className="m-nav-label" style={{ color: "rgba(255,255,255,0.6)", fontSize: presenter ? 13 : 11, fontWeight: 500, letterSpacing: "0.03em" }}>INSTRUMENTE FINANCIARE</span>
       </div>
@@ -223,7 +223,7 @@ function BookingModal({ isOpen, onClose }) {
             <img src="https://planable.imgix.net/BX3Rd95mwvvAuKGGa/GjkmySXhsv-image-169-src.png?auto=format&w=200&h=200&dpr=2" alt="" style={{ width: 40, height: 40, borderRadius: "50%", objectFit: "cover", border: `2px solid ${T.burgundyMuted}`, marginLeft: -14 }} />
           </div>
           <div style={{ color: T.burgundy, fontSize: 20, fontWeight: 700, fontFamily: T.font, lineHeight: 1.3, marginBottom: 6, paddingRight: 32 }}>
-            Programează o sesiune gratuită de consultanță
+            Programează o sesiune gratuită de audit
           </div>
           <div style={{ color: T.textMuted, fontSize: 13, fontFamily: T.font, marginBottom: 20, lineHeight: 1.5 }}>
             Completează formularul și te contactăm în 24h
@@ -234,7 +234,7 @@ function BookingModal({ isOpen, onClose }) {
           <iframe
             src={hsFormUrl}
             style={{ width: "100%", height: 480, border: "none", borderRadius: T.radiusSm, background: T.cream }}
-            title="Programare consultanță LT Wealth"
+            title="Programare audit Minimalistu"
           />
         </div>
       </div>
@@ -1611,7 +1611,7 @@ function AlphaChart({ data, presenter }) {
     ctx.fillText(`+${fmtK(last.boosted - last.base)}`, bx - 8, (y(last.boosted) + y(last.base)) / 2 + 4);
     // Legend
     const ly = pad.top - 12; ctx.font = `500 ${presenter ? 11 : 9}px DM Sans,sans-serif`;
-    ctx.fillStyle = T.green; ctx.fillRect(pad.left, ly - 3, 12, 2.5); ctx.fillText("Cu LT Wealth", pad.left + 16, ly);
+    ctx.fillStyle = T.green; ctx.fillRect(pad.left, ly - 3, 12, 2.5); ctx.fillText("Cu consultant", pad.left + 16, ly);
     ctx.fillStyle = T.textMuted; ctx.setLineDash([4, 2]); ctx.strokeStyle = T.textMuted; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(pad.left + 120, ly - 2); ctx.lineTo(pad.left + 132, ly - 2); ctx.stroke(); ctx.setLineDash([]);
     ctx.fillText("Fără strategie", pad.left + 136, ly);
   }, [data, presenter]);
@@ -1649,7 +1649,7 @@ function BehavioralAlphaTool({ presenter }) {
           Ce diferență fac<span style={{ color: T.amber }}> +3% pe an?</span>
         </h1>
         <p style={{ fontFamily: T.font, fontSize: presenter ? 15 : 13, color: T.textMuted, margin: "8px 0 0 0", lineHeight: 1.5, display: "flex", alignItems: "center", justifyContent: presenter ? "center" : "flex-start", flexWrap: "wrap" }}>
-          Strategia LT Wealth aduce in medie +3% la randamentul anual prin disciplina comportamentala.
+          Strategia Minimalistu aduce in medie +3% la randamentul anual prin disciplina comportamentala.
           <InfoTip text="Studiile Vanguard (Advisor's Alpha) si Morningstar (Gamma) arata ca un advisor bun adauga 1.5-3% pe an, in principal prin prevenirea erorilor comportamentale: panic selling, performance chasing, timing." presenter={presenter} />
         </p>
       </div>
@@ -1690,12 +1690,12 @@ function BehavioralAlphaTool({ presenter }) {
           {/* Big green alpha number */}
           <div style={{ padding: presenter ? "28px 32px" : "20px 24px", background: T.greenFaint, borderRadius: T.radius, border: `1px solid ${T.greenMuted}`, textAlign: presenter ? "center" : "left" }}>
             <div style={{ fontSize: presenter ? 14 : 11, fontWeight: 600, color: T.green, textTransform: "uppercase", letterSpacing: "0.04em", marginBottom: 4, fontFamily: T.font, display: "flex", alignItems: "center", justifyContent: presenter ? "center" : "flex-start" }}>
-              Diferența LT Wealth in {years} ani
+              Diferența Minimalistu in {years} ani
               <InfoTip text={`+3% pe an transformat pe ${years} ani, cu compunerea, inseamna ${fmtK(alphaDiff)} in plus.`} presenter={presenter} />
             </div>
             <div style={{ fontSize: presenter ? 52 : 36, fontWeight: 700, color: T.green, fontFamily: T.font, lineHeight: 1 }}>+{fmt(alphaDiff)}</div>
             <div style={{ display: "flex", gap: presenter ? 16 : 10, marginTop: 14, flexWrap: "wrap", justifyContent: presenter ? "center" : "flex-start" }}>
-              <Pill value={`+${fmt(dailyAlpha)}`} label="/ zi in plus" color={T.green} presenter={presenter} tip={`Fiecare zi cu strategia LT Wealth aduce in medie +${fmt(dailyAlpha)} in plus fata de un investitor tipic.`} />
+              <Pill value={`+${fmt(dailyAlpha)}`} label="/ zi in plus" color={T.green} presenter={presenter} tip={`Fiecare zi cu strategia Minimalistu aduce in medie +${fmt(dailyAlpha)} in plus fata de un investitor tipic.`} />
               <Pill value={`${baseReturn}% \u2192 ${baseReturn + alphaBoost}%`} label="randament annual" color={T.green} presenter={presenter} />
             </div>
           </div>
@@ -1703,13 +1703,13 @@ function BehavioralAlphaTool({ presenter }) {
           {/* Side by side */}
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <StatCard label="Fără strategie" value={fmtK(last.base)} color={T.textMuted} bgColor={T.white} presenter={presenter} icon={"\uD83D\uDC64"} sub={`${baseReturn}%/an \u00B7 ${multiplierBase.toFixed(1)}x`} tip="Randamentul unui investitor tipic fara disciplina si strategie." />
-            <StatCard label="Cu LT Wealth" value={fmtK(last.boosted)} color={T.green} bgColor={T.greenFaint} presenter={presenter} icon={"\uD83C\uDFC6"} sub={`${baseReturn + alphaBoost}%/an \u00B7 ${multiplierBoosted.toFixed(1)}x`} tip="Randamentul cu strategia comportamentala LT Wealth." />
+            <StatCard label="Cu consultant" value={fmtK(last.boosted)} color={T.green} bgColor={T.greenFaint} presenter={presenter} icon={"\uD83C\uDFC6"} sub={`${baseReturn + alphaBoost}%/an \u00B7 ${multiplierBoosted.toFixed(1)}x`} tip="Randamentul cu strategia comportamentala Minimalistu." />
           </div>
 
           {/* Chart */}
           <div style={{ padding: presenter ? "20px 24px 16px" : "16px 20px 12px", background: T.white, borderRadius: T.radius, border: `1px solid ${T.border}` }}>
             <div style={{ display: "flex", alignItems: "center", marginBottom: 4, fontSize: presenter ? 13 : 11, color: T.textMuted, fontFamily: T.font, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.04em" }}>
-              Impactul +3% pe termen lung<InfoTip text="Verde = cu LT Wealth. Gri = fara strategie. Zona verde = diferenta din disciplina comportamentala." presenter={presenter} />
+              Impactul +3% pe termen lung<InfoTip text="Verde = cu Minimalistu. Gri = fara strategie. Zona verde = diferenta din disciplina comportamentala." presenter={presenter} />
             </div>
             <AlphaChart data={data} presenter={presenter} />
           </div>
@@ -1723,7 +1723,7 @@ function BehavioralAlphaTool({ presenter }) {
             </div>
             <div style={{ fontSize: presenter ? 28 : 20, color: T.green, fontWeight: 700 }}>&rarr;</div>
             <div style={{ textAlign: "center" }}>
-              <div style={{ fontSize: presenter ? 11 : 9, color: T.green, fontFamily: T.font, textTransform: "uppercase", letterSpacing: "0.04em", marginBottom: 4 }}>Cu LT Wealth</div>
+              <div style={{ fontSize: presenter ? 11 : 9, color: T.green, fontFamily: T.font, textTransform: "uppercase", letterSpacing: "0.04em", marginBottom: 4 }}>Cu consultant</div>
               <div style={{ fontSize: presenter ? 36 : 26, fontWeight: 700, color: T.green, fontFamily: T.font }}>{multiplierBoosted.toFixed(1)}x</div>
               <div style={{ fontSize: presenter ? 11 : 9, color: T.green, fontFamily: T.font }}>multiplicator</div>
             </div>
@@ -1733,7 +1733,7 @@ function BehavioralAlphaTool({ presenter }) {
           <div style={{ padding: presenter ? "20px 28px" : "16px 20px", background: T.amberFaint, borderRadius: T.radius, borderLeft: `4px solid ${T.amber}` }}>
             <div style={{ fontSize: presenter ? 15 : 13, color: T.text, fontFamily: T.font, lineHeight: 1.6 }}>
               {presenter ? (
-                <><strong style={{ color: T.burgundy }}>Cele +3% nu vin din prezicerea pietei. Vin din disciplina.</strong> Fără strategie, un investitor tipic obtine {baseReturn}%/an ({multiplierBase.toFixed(1)}x in {years} ani). Cu strategia LT Wealth: {baseReturn + alphaBoost}%/an ({multiplierBoosted.toFixed(1)}x). Diferenta: <strong style={{ color: T.green }}>+{fmtK(alphaDiff)}</strong>. Asta e puterea disciplinei comportamentale.</>
+                <><strong style={{ color: T.burgundy }}>Cele +3% nu vin din prezicerea pietei. Vin din disciplina.</strong> Fără strategie, un investitor tipic obtine {baseReturn}%/an ({multiplierBase.toFixed(1)}x in {years} ani). Cu strategia Minimalistu: {baseReturn + alphaBoost}%/an ({multiplierBoosted.toFixed(1)}x). Diferenta: <strong style={{ color: T.green }}>+{fmtK(alphaDiff)}</strong>. Asta e puterea disciplinei comportamentale.</>
               ) : (
                 <><strong>+3%/an pare putin.</strong> Dar pe {years} ani, transformat prin compunere, inseamna <strong style={{ color: T.green }}>+{fmtK(alphaDiff)}</strong> in plus. Diferenta vine din disciplina, nu din predictii.</>
               )}
@@ -2760,7 +2760,7 @@ function AboutPanel({ isOpen, onClose }) {
               <img src="https://planable.imgix.net/BX3Rd95mwvvAuKGGa/E53AA5EuKR-image-169-src-1.png?auto=format&w=200&h=200&dpr=2" alt="Vlad Caluș" style={{ width: 80, height: 80, borderRadius: "50%", objectFit: "cover", border: `3px solid ${T.burgundyMuted}` }} />
               <div>
                 <div style={{ fontSize: 16, fontWeight: 700, color: T.text, fontFamily: T.font }}>Vlad Caluș</div>
-                <div style={{ fontSize: 12, color: T.textMuted, fontFamily: T.font, lineHeight: 1.5 }}>Fondator Minimalistu · Co-fondator, LT Wealth Partners</div>
+                <div style={{ fontSize: 12, color: T.textMuted, fontFamily: T.font, lineHeight: 1.5 }}>Fondator Minimalistu</div>
               </div>
             </div>
             <div style={{ fontSize: 13, color: T.textMuted, fontFamily: T.font, lineHeight: 1.75, marginBottom: 20 }}>
@@ -2782,11 +2782,11 @@ function AboutPanel({ isOpen, onClose }) {
             </div>
           </div>
 
-          {/* ── SECTION 3: LT Wealth Partners ── */}
+          {/* ── SECTION 3: Minimalistu ── */}
           <div style={{ marginBottom: 40 }}>
-            <SectionTitle>Echipa din spatele instrumentelor</SectionTitle>
+            <SectionTitle>Despre Minimalistu</SectionTitle>
             <Body>
-              Împreună cu Lucian Streche — consultant financiar cu experiență în gestionarea portofoliilor — am construit LT Wealth Partners pentru oamenii care câștigă bine, dar nu au un plan clar pentru banii lor.
+              Am construit Minimalistu pentru oamenii care câștigă bine, dar nu au un plan clar pentru banii lor.
               <br /><br />
               Nu vindem produse financiare. Te ajutăm să înțelegi ce ai, ce-ți lipsește, și ce pași concreți să faci.
             </Body>
@@ -2824,7 +2824,7 @@ function AboutPanel({ isOpen, onClose }) {
                 </div>
                 {/* After */}
                 <div style={{ padding: "16px 20px", background: T.greenFaint }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, color: T.green, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 10, fontFamily: T.font }}>Soluția LT Wealth</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: T.green, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 10, fontFamily: T.font }}>Soluția noastră</div>
                   <AfterItem>70% acțiuni globale (ETF-uri), 23% titluri de stat, 5% aur</AfterItem>
                   <AfterItem>Acces la 3.000+ companii din întreaga lume</AfterItem>
                   <AfterItem>Comisioane reduse de la 2-3% la 0.20%</AfterItem>
@@ -2857,7 +2857,7 @@ function AboutPanel({ isOpen, onClose }) {
                 </div>
                 {/* After */}
                 <div style={{ padding: "16px 20px", background: T.greenFaint }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, color: T.green, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 10, fontFamily: T.font }}>Soluția LT Wealth</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: T.green, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 10, fontFamily: T.font }}>Soluția noastră</div>
                   <AfterItem>Crypto redus de la 24.5% la 4%</AfterItem>
                   <AfterItem>Obligațiuni generatoare de venit: 0% → 22.5%</AfterItem>
                   <AfterItem>ETF cu dividende adăugat (4.5% randament)</AfterItem>
@@ -4524,8 +4524,7 @@ export default function MinimalistuTools() {
           <div style={{ display: tool === "realestate" ? "block" : "none" }}><RandamentImobiliarTool presenter={presenter} /></div>
         </div>
         <div style={{ textAlign: "center", padding: "20px 0 8px", color: T.textLight, fontSize: 11, fontFamily: T.font }}>
-          <span style={{ fontFamily: T.fontDisplay, fontSize: 14, color: T.burgundySubtle }}>lt<span style={{ color: T.amber }}>.</span>w</span>
-          {" "}&middot; LT Wealth Foundation &middot; Wealth as clarity. Not consumption.
+          <span style={{ fontFamily: T.fontDisplay, fontSize: 14, color: T.burgundySubtle }}>Minimalistu</span>
         </div>
         <div style={{ textAlign: "center", padding: "0 20px 24px", maxWidth: 700, margin: "0 auto" }}>
           <p style={{ fontSize: 10, color: T.textLight, fontFamily: T.font, lineHeight: 1.6, margin: 0 }}>
@@ -4533,7 +4532,7 @@ export default function MinimalistuTools() {
             Nu constituie consiliere financiară, fiscală sau de investiții personalizată.
             Rezultatele sunt estimative și bazate pe ipoteze simplificate — randamentele viitoare nu sunt garantate.
             Performanțele istorice nu garantează rezultate viitoare. Consultă un consilier financiar autorizat
-            înainte de a lua decizii de investiții. LT Wealth Foundation nu își asumă responsabilitatea
+            înainte de a lua decizii de investiții. Vlad Caluș și Minimalistu nu își asumă responsabilitatea
             pentru deciziile luate pe baza acestor calcule.
           </p>
         </div>

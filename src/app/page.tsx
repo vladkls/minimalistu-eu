@@ -1,15 +1,18 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useBookingModal } from "@/components/BookingModalProvider";
+import { NavBar } from "@/components/NavBar";
+import { Footer } from "@/components/Footer";
 
-const HUBSPOT_LINK =
-  "https://meetings-eu1.hubspot.com/vlad-calus/round-robin-consultanta";
 const CARTE_LINK =
   "https://carturesti.ro/carte/independenta-financiara-in-7-pasi-3211453017";
 
 /* ═══════════════════════════════════════════════════════════════
    SECTION 1 — Hero
    ═══════════════════════════════════════════════════════════════ */
-function Hero() {
+function Hero({ onOpenModal }: { onOpenModal: () => void }) {
   return (
     <section className="py-20 md:py-32">
       <div className="mx-auto max-w-[1080px] px-5 text-center">
@@ -25,14 +28,12 @@ function Hero() {
 
         {/* CTAs */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href={HUBSPOT_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-8 py-4 bg-burgundy text-white text-base font-semibold rounded-lg hover:bg-burgundy-light transition-colors"
+          <button
+            onClick={onOpenModal}
+            className="inline-flex items-center px-8 py-4 bg-burgundy text-white text-base font-semibold rounded-lg hover:bg-burgundy-light transition-colors cursor-pointer"
           >
             Programează un audit →
-          </a>
+          </button>
           <Link
             href="/instrumente"
             className="inline-flex items-center px-8 py-4 border-2 border-burgundy text-burgundy text-base font-semibold rounded-lg hover:bg-burgundy hover:text-white transition-colors"
@@ -442,7 +443,7 @@ function HowItWorks() {
 /* ═══════════════════════════════════════════════════════════════
    SECTION 7 — Final CTA
    ═══════════════════════════════════════════════════════════════ */
-function FinalCTA() {
+function FinalCTA({ onOpenModal }: { onOpenModal: () => void }) {
   return (
     <section className="py-20 md:py-28 bg-burgundy/5">
       <div className="mx-auto max-w-[1080px] px-5 text-center">
@@ -456,14 +457,12 @@ function FinalCTA() {
           de independență financiară. Într-o sesiune de 90 de minute, îți arătăm
           exact ce pași să faci.
         </p>
-        <a
-          href={HUBSPOT_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-10 inline-flex items-center px-10 py-5 bg-burgundy text-white text-lg font-semibold rounded-xl hover:bg-burgundy-light transition-colors"
+        <button
+          onClick={onOpenModal}
+          className="mt-10 inline-flex items-center px-10 py-5 bg-burgundy text-white text-lg font-semibold rounded-xl hover:bg-burgundy-light transition-colors cursor-pointer"
         >
           Vreau un plan concret →
-        </a>
+        </button>
         <p className="mt-6 text-sm text-text-muted">
           ✓ Fără obligații · ✓ 100% confidențial · ✓ Răspuns în 24h
         </p>
@@ -480,15 +479,19 @@ function FinalCTA() {
    PAGE
    ═══════════════════════════════════════════════════════════════ */
 export default function Home() {
+  const { openModal } = useBookingModal();
+
   return (
     <>
-      <Hero />
+      <NavBar />
+      <Hero onOpenModal={openModal} />
       <About />
       <Results />
       <InstrumentsPreview />
       <CaseStudies />
       <HowItWorks />
-      <FinalCTA />
+      <FinalCTA onOpenModal={openModal} />
+      <Footer />
     </>
   );
 }

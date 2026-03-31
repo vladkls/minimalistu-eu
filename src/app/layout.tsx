@@ -3,6 +3,7 @@ import { DM_Sans, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
+import { BookingModalProvider } from "@/components/BookingModalProvider";
 
 const dmSans = DM_Sans({
   variable: "--font-body",
@@ -41,9 +42,9 @@ export default function RootLayout({
       className={`${dmSans.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-body">
-        <NavBar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <BookingModalProvider>
+          {children}
+        </BookingModalProvider>
       </body>
     </html>
   );
