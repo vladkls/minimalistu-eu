@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const HUBSPOT_LINK =
   "https://meetings-eu1.hubspot.com/vlad-calus/round-robin-consultanta";
@@ -30,7 +31,7 @@ function Hero() {
             rel="noopener noreferrer"
             className="inline-flex items-center px-8 py-4 bg-burgundy text-white text-base font-semibold rounded-lg hover:bg-burgundy-light transition-colors"
           >
-            Programează o consultanță →
+            Programează un audit →
           </a>
           <Link
             href="/instrumente"
@@ -110,9 +111,16 @@ function About() {
             </a>
           </div>
 
-          {/* Photo placeholder */}
-          <div className="hidden md:flex items-center justify-center w-64 h-64 rounded-full bg-card border border-border">
-            <span className="text-6xl">👤</span>
+          {/* Photo */}
+          <div className="hidden md:block flex-shrink-0">
+            <Image
+              src="/vlad.jpg"
+              alt="Vlad Caluș"
+              width={280}
+              height={350}
+              className="rounded-2xl object-cover"
+              priority
+            />
           </div>
         </div>
       </div>
@@ -458,6 +466,10 @@ function FinalCTA() {
         </a>
         <p className="mt-6 text-sm text-text-muted">
           ✓ Fără obligații · ✓ 100% confidențial · ✓ Răspuns în 24h
+        </p>
+        <p className="mt-4 text-xs text-text-muted/60 max-w-md mx-auto">
+          Auditul financiar oferit nu constituie consiliere financiară
+          autorizată. Vlad Caluș nu este consilier financiar autorizat.
         </p>
       </div>
     </section>

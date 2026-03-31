@@ -9,7 +9,7 @@ const MinimalistuTools = dynamic(
 
 export default function InstrumentePage() {
   return (
-    <div className="-mt-16">
+    <div className="pt-0">
       <MinimalistuTools />
     </div>
   );

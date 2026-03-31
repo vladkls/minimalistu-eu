@@ -45,7 +45,7 @@ export function NavBar() {
             rel="noopener noreferrer"
             className="inline-flex items-center px-5 py-2 bg-burgundy text-white text-sm font-semibold rounded-lg hover:bg-burgundy-light transition-colors"
           >
-            Programează o consultanță →
+            Programează un audit →
           </a>
         </div>
 
@@ -91,7 +91,7 @@ export function NavBar() {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-5 py-3 bg-burgundy text-white text-sm font-semibold rounded-lg"
           >
-            Programează o consultanță →
+            Programează un audit →
           </a>
         </div>
       )}

@@ -50,9 +50,11 @@ export function Footer() {
 
         {/* Disclaimer */}
         <p className="mt-8 text-center text-xs text-text-muted leading-relaxed max-w-2xl mx-auto">
-          Informațiile prezentate nu constituie consiliere financiară
-          personalizată. Consultă un consilier financiar autorizat înainte de a
-          lua decizii de investiții.
+          Vlad Caluș nu este consilier financiar autorizat. Informațiile
+          prezentate au caracter educativ și informativ și nu constituie
+          consiliere financiară, fiscală sau de investiții personalizată.
+          Consultă un consilier financiar autorizat înainte de a lua decizii de
+          investiții.
         </p>
       </div>
     </footer>
