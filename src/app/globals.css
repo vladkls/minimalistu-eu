@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-cream: #F3EDE5;
+  --color-burgundy: #7B2D50;
+  --color-burgundy-light: #8E3A62;
+  --color-burgundy-dark: #5E1F3C;
+  --color-amber: #E8A832;
+  --color-amber-light: #F0C060;
+  --color-green: #2F8C5E;
+  --color-red: #C0384D;
+  --color-text: #1a1a18;
+  --color-text-muted: #73726c;
+  --color-card: #FFFFFF;
+  --color-border: rgba(123, 45, 80, 0.10);
+  --font-heading: "Instrument Serif", Georgia, serif;
+  --font-body: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+html {
+  scroll-behavior: smooth;
+}
