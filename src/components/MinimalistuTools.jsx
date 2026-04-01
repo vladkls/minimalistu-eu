@@ -127,9 +127,11 @@ function NavBar({ active, onSelect, presenter, onToggle, onAbout }) {
   const activeTool = TOOLS.find(t => t.id === active);
   useEffect(() => { if (!menuOpen) return; const fn = e => { if (menuRef.current && !menuRef.current.contains(e.target)) setMenuOpen(false); }; document.addEventListener("mousedown", fn); return () => document.removeEventListener("mousedown", fn); }, [menuOpen]);
   return (
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: presenter ? "16px 32px" : "12px 20px", background: T.burgundy, borderRadius: `${T.radius}px ${T.radius}px 0 0`, fontFamily: T.font, flexWrap: "wrap", gap: 8 }}>
+    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: presenter ? "16px 32px" : "12px 20px", background: T.burgundy, borderRadius: T.radius, fontFamily: T.font, flexWrap: "wrap", gap: 8 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
         <span className="m-nav-label" style={{ color: "rgba(255,255,255,0.8)", fontSize: presenter ? 13 : 11, fontWeight: 500, letterSpacing: "0.03em" }}>INSTRUMENTE FINANCIARE</span>
+        <span className="m-nav-label" style={{ color: "rgba(255,255,255,0.4)", fontSize: 11, fontWeight: 400, fontFamily: T.font }}>·</span>
+        <span className="m-nav-label" style={{ color: "rgba(255,255,255,0.5)", fontSize: 11, fontWeight: 400, fontFamily: T.font, whiteSpace: "nowrap" }}>alege alt instrument ↓</span>
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
         {/* Burger menu */}
@@ -139,7 +141,6 @@ function NavBar({ active, onSelect, presenter, onToggle, onAbout }) {
             <span>{activeTool ? activeTool.name : "Instrumente"}</span>
             <span style={{ fontSize: 10, opacity: 0.6, transform: menuOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>{"\u25BC"}</span>
           </button>
-          <span className="m-nav-label" style={{ color: "rgba(255,255,255,0.5)", fontSize: 11, fontWeight: 400, fontFamily: T.font, whiteSpace: "nowrap" }}>← alege alt instrument</span>
           {menuOpen && (
             <div style={{ position: "absolute", top: "calc(100% + 8px)", right: 0, background: T.white, borderRadius: T.radius, boxShadow: T.shadowLift, border: `1px solid ${T.border}`, zIndex: 200, minWidth: presenter ? 360 : 280, overflow: "hidden" }}>
               {TOOLS.map((t, i) => (
@@ -4505,7 +4506,7 @@ export default function MinimalistuTools() {
       `}</style>
       <div style={{ maxWidth: presenter ? 1200 : 900, margin: "0 auto" }}>
         <NavBar active={tool} onSelect={setTool} presenter={presenter} onToggle={() => setPresenter(p => !p)} onAbout={openAbout} />
-        <div className="m-content-pad" style={{ background: T.cream, padding: presenter ? 40 : 24, borderRadius: `0 0 ${T.radius}px ${T.radius}px`, border: `1px solid ${T.border}`, borderTop: "none" }}>
+        <div className="m-content-pad" style={{ background: T.cream, padding: presenter ? 40 : 24 }}>
           <div style={{ display: tool === "networth" ? "block" : "none" }}><NetWorthTool presenter={presenter} onNavigate={handleNavigateFromNW} /></div>
           <div style={{ display: tool === "cost" ? "block" : "none" }}><OpportunityCostTool presenter={presenter} /></div>
           <div style={{ display: tool === "compound" ? "block" : "none" }}><CompoundInterestTool presenter={presenter} /></div>

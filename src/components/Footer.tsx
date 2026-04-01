@@ -48,13 +48,19 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Disclaimer */}
+        {/* Disclaimers */}
         <p className="mt-8 text-center text-xs text-text-muted leading-relaxed max-w-2xl mx-auto">
           Vlad Caluș nu este consilier financiar autorizat. Informațiile
           prezentate au caracter educativ și informativ și nu constituie
           consiliere financiară, fiscală sau de investiții personalizată.
           Consultă un consilier financiar autorizat înainte de a lua decizii de
           investiții.
+        </p>
+        <p className="mt-3 text-center text-xs text-text-muted leading-relaxed max-w-2xl mx-auto">
+          Tranzacționarea este riscantă și ar putea duce la pierderea parțială
+          sau totală a capitalului investit. Informațiile sunt furnizate doar în
+          scop informativ și educațional și nu reprezintă sfaturi financiare
+          și/sau recomandări de investiții.
         </p>
       </div>
     </footer>

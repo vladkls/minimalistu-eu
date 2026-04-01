@@ -265,7 +265,7 @@ function CaseStudies() {
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Case Study 1 */}
-          <div className="bg-cream rounded-xl p-6 md:p-8 border border-border">
+          <div className="bg-cream rounded-xl p-6 md:p-8 border border-border flex flex-col">
             <h3 className="font-heading text-xl text-burgundy mb-6">
               Capital blocat → Capital care lucrează
             </h3>
@@ -314,7 +314,7 @@ function CaseStudies() {
               </ul>
             </div>
 
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-2 mt-auto">
               {[
                 { value: "+3.18%", label: "randament anual" },
                 { value: "+€180.000", label: "diferență pe 20 ani" },
@@ -333,7 +333,7 @@ function CaseStudies() {
           </div>
 
           {/* Case Study 2 */}
-          <div className="bg-cream rounded-xl p-6 md:p-8 border border-border">
+          <div className="bg-cream rounded-xl p-6 md:p-8 border border-border flex flex-col">
             <h3 className="font-heading text-xl text-burgundy mb-6">
               De la anxietate la stabilitate
             </h3>
@@ -385,7 +385,7 @@ function CaseStudies() {
               </ul>
             </div>
 
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-2 mt-auto">
               {[
                 { value: "6x", label: "reducere volatilitate" },
                 { value: "€0 → venit", label: "din obligațiuni + dividende" },
@@ -528,7 +528,7 @@ function Testimonials() {
               </p>
 
               {/* Result pill */}
-              <span className="inline-block self-start px-3 py-1.5 bg-green/10 text-green rounded-full text-[11px] font-semibold leading-tight">
+              <span className="inline-block self-start mt-auto px-3 py-1.5 bg-green/10 text-green rounded-full text-[11px] font-semibold leading-tight">
                 {t.result}
               </span>
             </div>
@@ -589,7 +589,133 @@ function HowItWorks() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   SECTION 7 — Final CTA
+   SECTION 7 — Press Mentions
+   ═══════════════════════════════════════════════════════════════ */
+function PressMentions() {
+  const publications = [
+    { name: "Wall Street", url: "https://www.wall-street.ro" },
+    { name: "Piața Financiară", url: "https://www.piatafinanciara.ro" },
+    { name: "Bursa", url: "https://www.bursa.ro" },
+    { name: "Futurebanking", url: "https://www.futurebanking.ro" },
+    { name: "BaniSiAfaceri", url: "https://www.banisiafaceri.ro" },
+    { name: "Income Magazine", url: "https://incomemagazine.ro" },
+    { name: "Retail.ro", url: "https://www.retail.ro" },
+    { name: "Economistul", url: "https://www.economistul.ro" },
+    { name: "Financial Market", url: "https://www.financialmarket.ro" },
+    { name: "Newslist", url: "https://www.newslist.ro" },
+    { name: "Ziar.com", url: "https://www.ziar.com" },
+  ];
+
+  return (
+    <section className="py-16 md:py-24 bg-card">
+      <div className="mx-auto max-w-[1080px] px-5">
+        <div className="text-center mb-10">
+          <h2 className="font-heading text-3xl md:text-4xl text-burgundy">
+            Mențiuni în presă
+          </h2>
+        </div>
+
+        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+          {publications.map((p) => (
+            <a
+              key={p.name}
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-text-muted hover:text-burgundy transition-colors text-sm md:text-base font-medium whitespace-nowrap"
+            >
+              {p.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 7b — Podcast Highlights
+   ═══════════════════════════════════════════════════════════════ */
+function PodcastHighlights() {
+  const podcasts = [
+    {
+      id: "Lzo5gbelkE4",
+      title: "Independența financiară în 7 pași",
+      show: "Podcast cu Vlad Calus",
+    },
+    {
+      id: "RjcVnBseD4s",
+      title: "Banii care aduc libertate, nu stres",
+      show: "Educație Financiară",
+    },
+    {
+      id: "tfGi6mlflFs",
+      title: "Te poți pensiona la 30 de ani cu investiții?",
+      show: "Traders Club",
+    },
+  ];
+
+  return (
+    <section className="py-16 md:py-24">
+      <div className="mx-auto max-w-[1080px] px-5">
+        <div className="text-center mb-12">
+          <p className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3">
+            Apariții
+          </p>
+          <h2 className="font-heading text-3xl md:text-4xl text-burgundy">
+            Podcasturi de top
+          </h2>
+          <p className="mt-4 text-text-muted max-w-xl mx-auto">
+            Conversații despre independență financiară, investiții și mentalitatea
+            din spatele banilor.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {podcasts.map((p) => (
+            <a
+              key={p.id}
+              href={`https://www.youtube.com/watch?v=${p.id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block bg-card rounded-xl border border-border overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all"
+            >
+              <div className="relative aspect-video bg-burgundy/5">
+                <Image
+                  src={`https://img.youtube.com/vi/${p.id}/maxresdefault.jpg`}
+                  alt={p.title}
+                  fill
+                  className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                />
+                {/* Play button overlay */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-14 h-14 rounded-full bg-burgundy/90 flex items-center justify-center group-hover:bg-burgundy transition-colors">
+                    <svg
+                      className="w-6 h-6 text-white ml-1"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div className="p-4">
+                <p className="font-semibold text-text text-sm leading-snug">
+                  {p.title}
+                </p>
+                <p className="text-xs text-text-muted mt-1">{p.show}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 8 — Final CTA
    ═══════════════════════════════════════════════════════════════ */
 function FinalCTA({ onOpenModal }: { onOpenModal: () => void }) {
   return (
@@ -614,10 +740,6 @@ function FinalCTA({ onOpenModal }: { onOpenModal: () => void }) {
         <p className="mt-6 text-sm text-text-muted">
           ✓ Fără obligații · ✓ 100% confidențial · ✓ Răspuns în 24h
         </p>
-        <p className="mt-4 text-xs text-text-muted/60 max-w-md mx-auto">
-          Auditul financiar oferit nu constituie consiliere financiară
-          autorizată. Vlad Caluș nu este consilier financiar autorizat.
-        </p>
       </div>
     </section>
   );
@@ -638,6 +760,8 @@ export default function Home() {
       <CaseStudies />
       <Testimonials />
       <HowItWorks />
+      <PressMentions />
+      <PodcastHighlights />
       <FinalCTA onOpenModal={openModal} />
       <Footer />
     </>
