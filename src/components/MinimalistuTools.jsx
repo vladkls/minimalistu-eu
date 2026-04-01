@@ -125,13 +125,13 @@ function NavBar({ active, onSelect, presenter, onToggle, onAbout }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const activeTool = TOOLS.find(t => t.id === active);
-  useEffect(() => { if (!menuOpen) return; const fn = e => { if (menuRef.current && !menuRef.current.contains(e.target)) setMenuOpen(false); }; document.addEventListener("mousedown", fn); return () => document.removeEventListener("mousedown", fn); }, [menuOpen]);
+  useEffect(() => { if (!menuOpen) return; const fn = e => { if (menuRef.current && !menuRef.current.contains(e.target)) setMenuOpen(false); }; document.addEventListener("mousedown", fn); document.addEventListener("touchstart", fn); return () => { document.removeEventListener("mousedown", fn); document.removeEventListener("touchstart", fn); }; }, [menuOpen]);
   return (
-    <div style={{ position: "relative", padding: presenter ? "16px 32px" : "12px 16px", background: T.burgundy, borderRadius: T.radius, fontFamily: T.font }}>
+    <div ref={menuRef} style={{ position: "relative", padding: presenter ? "16px 32px" : "12px 16px", background: T.burgundy, borderRadius: T.radius, fontFamily: T.font }}>
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
         {/* Top row: tool selector + prezentare */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
-          <button ref={menuRef} onClick={() => setMenuOpen(m => !m)} style={{ padding: presenter ? "10px 20px" : "10px 16px", background: "rgba(255,255,255,0.12)", border: "none", borderRadius: T.radiusSm, cursor: "pointer", color: "#fff", fontSize: presenter ? 14 : 13, fontFamily: T.font, fontWeight: 600, display: "flex", alignItems: "center", gap: 8, transition: "all 0.2s", flex: 1 }}>
+          <button onClick={() => setMenuOpen(m => !m)} style={{ padding: presenter ? "10px 20px" : "10px 16px", background: "rgba(255,255,255,0.12)", border: "none", borderRadius: T.radiusSm, cursor: "pointer", color: "#fff", fontSize: presenter ? 14 : 13, fontFamily: T.font, fontWeight: 600, display: "flex", alignItems: "center", gap: 8, transition: "all 0.2s", flex: 1 }}>
             <span>{activeTool ? activeTool.icon : "\u2630"}</span>
             <span style={{ flex: 1, textAlign: "left" }}>{activeTool ? activeTool.name : "Instrumente"}</span>
             <span style={{ fontSize: 10, opacity: 0.6, transform: menuOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>{"\u25BC"}</span>
