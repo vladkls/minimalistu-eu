@@ -127,41 +127,36 @@ function NavBar({ active, onSelect, presenter, onToggle, onAbout }) {
   const activeTool = TOOLS.find(t => t.id === active);
   useEffect(() => { if (!menuOpen) return; const fn = e => { if (menuRef.current && !menuRef.current.contains(e.target)) setMenuOpen(false); }; document.addEventListener("mousedown", fn); return () => document.removeEventListener("mousedown", fn); }, [menuOpen]);
   return (
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: presenter ? "16px 32px" : "12px 20px", background: T.burgundy, borderRadius: T.radius, fontFamily: T.font, flexWrap: "wrap", gap: 8 }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+    <div style={{ position: "relative", padding: presenter ? "16px 32px" : "12px 16px", background: T.burgundy, borderRadius: T.radius, fontFamily: T.font }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
         <span className="m-nav-label" style={{ color: "rgba(255,255,255,0.8)", fontSize: presenter ? 13 : 11, fontWeight: 500, letterSpacing: "0.03em" }}>INSTRUMENTE FINANCIARE</span>
-        <span className="m-nav-label" style={{ color: "rgba(255,255,255,0.4)", fontSize: 11, fontWeight: 400, fontFamily: T.font }}>·</span>
-        <span className="m-nav-label" style={{ color: "rgba(255,255,255,0.5)", fontSize: 11, fontWeight: 400, fontFamily: T.font, whiteSpace: "nowrap" }}>alege alt instrument ↓</span>
-      </div>
-      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-        {/* Burger menu */}
-        <div ref={menuRef} style={{ position: "relative" }}>
-          <button onClick={() => setMenuOpen(m => !m)} style={{ padding: presenter ? "10px 20px" : "7px 14px", background: "rgba(255,255,255,0.12)", border: "none", borderRadius: T.radiusSm, cursor: "pointer", color: "#fff", fontSize: presenter ? 14 : 12, fontFamily: T.font, fontWeight: 600, display: "flex", alignItems: "center", gap: 8, transition: "all 0.2s" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <button ref={menuRef} onClick={() => setMenuOpen(m => !m)} style={{ padding: presenter ? "10px 20px" : "7px 14px", background: "rgba(255,255,255,0.12)", border: "none", borderRadius: T.radiusSm, cursor: "pointer", color: "#fff", fontSize: presenter ? 14 : 12, fontFamily: T.font, fontWeight: 600, display: "flex", alignItems: "center", gap: 8, transition: "all 0.2s" }}>
             <span>{activeTool ? activeTool.icon : "\u2630"}</span>
             <span>{activeTool ? activeTool.name : "Instrumente"}</span>
             <span style={{ fontSize: 10, opacity: 0.6, transform: menuOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>{"\u25BC"}</span>
           </button>
-          {menuOpen && (
-            <div style={{ position: "absolute", top: "calc(100% + 8px)", right: 0, background: T.white, borderRadius: T.radius, boxShadow: T.shadowLift, border: `1px solid ${T.border}`, zIndex: 200, minWidth: presenter ? 360 : 280, overflow: "hidden" }}>
-              {TOOLS.map((t, i) => (
-                <button key={t.id} onClick={() => { if (t.ready) { onSelect(t.id); setMenuOpen(false); } }}
-                  style={{ display: "flex", alignItems: "center", gap: 12, width: "100%", padding: presenter ? "14px 20px" : "11px 16px", background: active === t.id ? T.burgundyFaint : "transparent", border: "none", borderBottom: i < TOOLS.length - 1 ? `1px solid ${T.border}` : "none", cursor: t.ready ? "pointer" : "default", fontFamily: T.font, textAlign: "left", transition: "background 0.15s", opacity: t.ready ? 1 : 0.4 }}
-                  onMouseEnter={e => { if (active !== t.id) e.currentTarget.style.background = T.cream; }}
-                  onMouseLeave={e => { e.currentTarget.style.background = active === t.id ? T.burgundyFaint : "transparent"; }}>
-                  <span style={{ fontSize: presenter ? 22 : 18, flexShrink: 0 }}>{t.icon}</span>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: presenter ? 14 : 12, fontWeight: active === t.id ? 700 : 500, color: active === t.id ? T.burgundy : T.text }}>{t.name}</div>
-                    <div style={{ fontSize: presenter ? 12 : 10, color: T.textMuted, marginTop: 1 }}>{t.desc}</div>
-                  </div>
-                  {active === t.id && <span style={{ fontSize: 11, color: T.burgundy, fontWeight: 600 }}>{"\u2713"}</span>}
-                </button>
-              ))}
-            </div>
-          )}
+          <div className="m-nav-label" style={{ width: 1, height: 20, background: "rgba(255,255,255,0.15)" }} />
+          <button className="m-nav-label" onClick={onToggle} style={{ padding: "6px 14px", border: "none", borderRadius: T.radiusSm, background: presenter ? T.amber : "rgba(255,255,255,0.08)", color: presenter ? T.burgundyDark : "rgba(255,255,255,0.6)", fontSize: 11, fontFamily: T.font, fontWeight: 600, cursor: "pointer", display: "flex", alignItems: "center", gap: 4, transition: "all 0.2s" }}>{presenter ? "✦ Prezentare" : "📺 Prezentare"}</button>
         </div>
-        <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.15)" }} />
-        <button onClick={onToggle} style={{ padding: "6px 14px", border: "none", borderRadius: T.radiusSm, background: presenter ? T.amber : "rgba(255,255,255,0.08)", color: presenter ? T.burgundyDark : "rgba(255,255,255,0.6)", fontSize: 11, fontFamily: T.font, fontWeight: 600, cursor: "pointer", display: "flex", alignItems: "center", gap: 4, transition: "all 0.2s" }}>{presenter ? "✦ Prezentare" : "📺 Prezentare"}</button>
       </div>
+      {menuOpen && (
+        <div className="m-tools-dropdown" style={{ position: "absolute", top: "calc(100% + 8px)", left: 0, right: 0, background: T.white, borderRadius: T.radius, boxShadow: T.shadowLift, border: `1px solid ${T.border}`, zIndex: 200, overflow: "hidden", maxHeight: "70vh", overflowY: "auto" }}>
+          {TOOLS.map((t, i) => (
+            <button key={t.id} onClick={() => { if (t.ready) { onSelect(t.id); setMenuOpen(false); } }}
+              style={{ display: "flex", alignItems: "center", gap: 12, width: "100%", padding: presenter ? "14px 20px" : "11px 16px", background: active === t.id ? T.burgundyFaint : "transparent", border: "none", borderBottom: i < TOOLS.length - 1 ? `1px solid ${T.border}` : "none", cursor: t.ready ? "pointer" : "default", fontFamily: T.font, textAlign: "left", transition: "background 0.15s", opacity: t.ready ? 1 : 0.4 }}
+              onMouseEnter={e => { if (active !== t.id) e.currentTarget.style.background = T.cream; }}
+              onMouseLeave={e => { e.currentTarget.style.background = active === t.id ? T.burgundyFaint : "transparent"; }}>
+              <span style={{ fontSize: presenter ? 22 : 18, flexShrink: 0 }}>{t.icon}</span>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontSize: presenter ? 14 : 12, fontWeight: active === t.id ? 700 : 500, color: active === t.id ? T.burgundy : T.text }}>{t.name}</div>
+                <div style={{ fontSize: presenter ? 12 : 10, color: T.textMuted, marginTop: 1 }}>{t.desc}</div>
+              </div>
+              {active === t.id && <span style={{ fontSize: 11, color: T.burgundy, fontWeight: 600 }}>{"\u2713"}</span>}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

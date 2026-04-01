@@ -654,7 +654,7 @@ function About() {
           </div>
 
           {/* Photo */}
-          <div className="hidden md:block flex-shrink-0">
+          <div className="flex-shrink-0 flex justify-center md:justify-start">
             <Image
               src="/vlad.jpg"
               alt="Vlad Caluș — fondator Minimalistu, investitor, Forbes 30 Sub 30"
