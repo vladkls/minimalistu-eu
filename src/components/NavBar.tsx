@@ -30,6 +30,12 @@ export function NavBar() {
           >
             Instrumente
           </Link>
+          <Link
+            href="/#despre"
+            className="text-sm font-medium text-text hover:text-burgundy transition-colors"
+          >
+            Despre noi
+          </Link>
           <a
             href={CARTE_LINK}
             target="_blank"
@@ -74,6 +80,13 @@ export function NavBar() {
             className="text-sm font-medium text-text"
           >
             Instrumente
+          </Link>
+          <Link
+            href="/#despre"
+            onClick={() => setOpen(false)}
+            className="text-sm font-medium text-text"
+          >
+            Despre noi
           </Link>
           <a
             href={CARTE_LINK}

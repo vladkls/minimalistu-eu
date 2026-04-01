@@ -3,11 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useBookingModal } from "@/components/BookingModalProvider";
-import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 
 const CARTE_LINK =
   "https://carturesti.ro/carte/independenta-financiara-in-7-pasi-3211453017";
+const EBOOK_LINK =
+  "https://buy.stripe.com/14A7sM5Lb3bQ7Asar1dwc0C";
 
 /* ═══════════════════════════════════════════════════════════════
    SECTION 1 — Hero
@@ -68,7 +69,7 @@ function Hero({ onOpenModal }: { onOpenModal: () => void }) {
    ═══════════════════════════════════════════════════════════════ */
 function About() {
   return (
-    <section className="py-16 md:py-24">
+    <section id="despre" className="py-16 md:py-24 scroll-mt-20">
       <div className="mx-auto max-w-[1080px] px-5">
         <div className="grid md:grid-cols-[1fr_auto] gap-12 items-center">
           <div>
@@ -94,22 +95,38 @@ function About() {
             </div>
 
             {/* Book card */}
-            <a
-              href={CARTE_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 flex items-center gap-4 p-4 bg-card rounded-xl border border-border hover:shadow-md transition-shadow"
-            >
-              <span className="text-3xl">📖</span>
-              <div>
-                <p className="font-semibold text-text">
-                  &quot;Independența financiară în 7 pași&quot;
-                </p>
-                <p className="text-sm text-text-muted">
-                  Cartea mea, disponibilă pe Cărturești →
-                </p>
+            <div className="mt-8 p-4 bg-card rounded-xl border border-border">
+              <div className="flex items-center gap-4">
+                <span className="text-3xl">📖</span>
+                <div>
+                  <p className="font-semibold text-text">
+                    &quot;Independența financiară în 7 pași&quot;
+                  </p>
+                  <p className="text-sm text-text-muted">
+                    Cartea mea — disponibilă în format fizic și digital.
+                  </p>
+                </div>
               </div>
-            </a>
+              <div className="flex flex-wrap gap-3 mt-3 ml-12">
+                <a
+                  href={CARTE_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-medium text-burgundy hover:underline"
+                >
+                  Cărturești (fizic) →
+                </a>
+                <span className="text-text-muted">·</span>
+                <a
+                  href={EBOOK_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-medium text-burgundy hover:underline"
+                >
+                  eBook (digital) →
+                </a>
+              </div>
+            </div>
           </div>
 
           {/* Photo */}
@@ -392,6 +409,137 @@ function CaseStudies() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   Avatar Component
+   ═══════════════════════════════════════════════════════════════ */
+const GRADIENTS = [
+  ["#7B2D50", "#E8A832"],
+  ["#2F8C5E", "#E8A832"],
+  ["#7B2D50", "#2F8C5E"],
+  ["#E8A832", "#C0384D"],
+  ["#2F8C5E", "#7B2D50"],
+  ["#C0384D", "#E8A832"],
+];
+
+function Avatar({
+  initials,
+  index,
+}: {
+  initials: string;
+  index: number;
+}) {
+  const [from, to] = GRADIENTS[index % GRADIENTS.length];
+  return (
+    <div
+      className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
+      style={{
+        background: `linear-gradient(135deg, ${from}, ${to})`,
+      }}
+    >
+      {initials}
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 5b — Testimonials
+   ═══════════════════════════════════════════════════════════════ */
+function Testimonials() {
+  const testimonials = [
+    {
+      initials: "I",
+      name: "Iulia",
+      meta: "30 ani · Irlanda",
+      quote:
+        "Aveam €19,500 în depozit de 3 ani pentru că nu știam ce să fac cu ei. În prima lună am investit totul și am setat un plan de €1,200/lună. În prima săptămână am văzut deja €437 câștig.",
+      result: "€19,500 investiți din depozite → plan €1,200/lună",
+    },
+    {
+      initials: "A",
+      name: "Alex",
+      meta: "21 ani · România",
+      quote:
+        "Înainte visam la independență financiară, dar îmi lipsea harta. În 8 săptămâni mi-am organizat veniturile, am creat strategia, am implementat și automatizat portofoliul. Obiectiv: €900K avere netă până la 30 de ani.",
+      result: "Independență financiară la 30 — plan complet în 8 săptămâni",
+    },
+    {
+      initials: "D",
+      name: "Dragoș",
+      meta: "37 ani · România",
+      quote:
+        "Am investit o moștenire de peste €5,000 în 3 săptămâni, mi-am automatizat complet portofoliul și am creat un plan de €200/lună spre FIRE.",
+      result: "€5,000+ investiți + portofoliu automatizat în 3 săptămâni",
+    },
+    {
+      initials: "T",
+      name: "Tudor",
+      meta: "29 ani · România",
+      quote:
+        "Am realocat €10,000 din fonduri mutuale cu comisioane de 3% pe an în ETF-uri eficiente. Am învățat să-mi gestionez finanțele și să-mi construiesc portofoliul pentru independență financiară.",
+      result: "€10,000 realocați — comisioane de la 3% la 0.2%",
+    },
+    {
+      initials: "G",
+      name: "Gheorghe",
+      meta: "37 ani · Republica Moldova",
+      quote:
+        "Programul m-a ajutat să-mi organizez finanțele, să economisesc constant și să încep să investesc. Am câștigat curaj să acționez, am crescut veniturile și am un fond de urgență.",
+      result: "Primele investiții + fond de urgență în 8 săptămâni",
+    },
+    {
+      initials: "G+A",
+      name: "Gabi și Alin",
+      meta: "26 ani · Olanda",
+      quote:
+        "Am intrat ca un cuplu care visa la independență financiară. Am ieșit cu un plan concret pentru FIRE și achiziția casei noastre de vis în Olanda.",
+      result: "Plan FIRE + strategie achiziție casă — cuplu, 26 ani",
+    },
+  ];
+
+  return (
+    <section className="py-16 md:py-24">
+      <div className="mx-auto max-w-[1080px] px-5">
+        <div className="text-center mb-12">
+          <p className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3">
+            Testimoniale
+          </p>
+          <h2 className="font-heading text-3xl md:text-4xl text-burgundy">
+            Ce spun oamenii care au trecut prin program
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {testimonials.map((t, i) => (
+            <div
+              key={t.name}
+              className="bg-card rounded-xl border border-border p-6 flex flex-col hover:shadow-md hover:-translate-y-0.5 transition-all"
+            >
+              {/* Header */}
+              <div className="flex items-center gap-3 mb-4">
+                <Avatar initials={t.initials} index={i} />
+                <div>
+                  <p className="font-semibold text-text text-sm">{t.name}</p>
+                  <p className="text-xs text-text-muted">{t.meta}</p>
+                </div>
+              </div>
+
+              {/* Quote */}
+              <p className="text-sm text-text leading-relaxed italic flex-1 mb-4">
+                &bdquo;{t.quote}&rdquo;
+              </p>
+
+              {/* Result pill */}
+              <span className="inline-block self-start px-3 py-1.5 bg-green/10 text-green rounded-full text-[11px] font-semibold leading-tight">
+                {t.result}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
    SECTION 6 — How It Works
    ═══════════════════════════════════════════════════════════════ */
 function HowItWorks() {
@@ -483,12 +631,12 @@ export default function Home() {
 
   return (
     <>
-      <NavBar />
       <Hero onOpenModal={openModal} />
       <About />
       <Results />
       <InstrumentsPreview />
       <CaseStudies />
+      <Testimonials />
       <HowItWorks />
       <FinalCTA onOpenModal={openModal} />
       <Footer />

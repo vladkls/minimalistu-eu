@@ -13,7 +13,7 @@ export function Footer() {
             <span className="font-heading text-xl text-burgundy">
               Minimalistu
             </span>
-            <p className="text-text-muted text-sm mt-1">© 2025 Minimalistu</p>
+            <p className="text-text-muted text-sm mt-1">© 2026 Minimalistu</p>
           </div>
 
           {/* Center links */}

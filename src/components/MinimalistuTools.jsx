@@ -129,9 +129,7 @@ function NavBar({ active, onSelect, presenter, onToggle, onAbout }) {
   return (
     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: presenter ? "16px 32px" : "12px 20px", background: T.burgundy, borderRadius: `${T.radius}px ${T.radius}px 0 0`, fontFamily: T.font, flexWrap: "wrap", gap: 8 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-        <a href="/" style={{ color: "#fff", fontSize: presenter ? 14 : 12, fontFamily: T.font, fontWeight: 500, textDecoration: "none", opacity: 0.8, display: "flex", alignItems: "center", gap: 6 }}>← Minimalistu.eu</a>
-        <div className="m-nav-label" style={{ width: 1, height: 20, background: "rgba(255,255,255,0.15)" }} />
-        <span className="m-nav-label" style={{ color: "rgba(255,255,255,0.6)", fontSize: presenter ? 13 : 11, fontWeight: 500, letterSpacing: "0.03em" }}>INSTRUMENTE FINANCIARE</span>
+        <span className="m-nav-label" style={{ color: "rgba(255,255,255,0.8)", fontSize: presenter ? 13 : 11, fontWeight: 500, letterSpacing: "0.03em" }}>INSTRUMENTE FINANCIARE</span>
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
         {/* Burger menu */}
@@ -141,6 +139,7 @@ function NavBar({ active, onSelect, presenter, onToggle, onAbout }) {
             <span>{activeTool ? activeTool.name : "Instrumente"}</span>
             <span style={{ fontSize: 10, opacity: 0.6, transform: menuOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>{"\u25BC"}</span>
           </button>
+          <span className="m-nav-label" style={{ color: "rgba(255,255,255,0.5)", fontSize: 11, fontWeight: 400, fontFamily: T.font, whiteSpace: "nowrap" }}>← alege alt instrument</span>
           {menuOpen && (
             <div style={{ position: "absolute", top: "calc(100% + 8px)", right: 0, background: T.white, borderRadius: T.radius, boxShadow: T.shadowLift, border: `1px solid ${T.border}`, zIndex: 200, minWidth: presenter ? 360 : 280, overflow: "hidden" }}>
               {TOOLS.map((t, i) => (
@@ -161,9 +160,6 @@ function NavBar({ active, onSelect, presenter, onToggle, onAbout }) {
         </div>
         <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.15)" }} />
         <button onClick={onToggle} style={{ padding: "6px 14px", border: "none", borderRadius: T.radiusSm, background: presenter ? T.amber : "rgba(255,255,255,0.08)", color: presenter ? T.burgundyDark : "rgba(255,255,255,0.6)", fontSize: 11, fontFamily: T.font, fontWeight: 600, cursor: "pointer", display: "flex", alignItems: "center", gap: 4, transition: "all 0.2s" }}>{presenter ? "✦ Prezentare" : "📺 Prezentare"}</button>
-        <button onClick={onAbout} style={{ padding: "6px 14px", border: "none", borderRadius: T.radiusSm, background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.6)", fontSize: 11, fontFamily: T.font, fontWeight: 600, cursor: "pointer", display: "flex", alignItems: "center", gap: 4, transition: "all 0.2s" }}
-          onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.15)"}
-          onMouseLeave={e => e.currentTarget.style.background = "rgba(255,255,255,0.08)"}>ℹ️ Despre noi</button>
       </div>
     </div>
   );
@@ -4461,7 +4457,7 @@ function RandamentImobiliarTool({ presenter }) {
 // ═══════════════════════════════════════════════════════════════
 
 export default function MinimalistuTools() {
-  const [tool, setTool] = useState("networth");
+  const [tool, setTool] = useState("fire");
   const [presenter, setPresenter] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
