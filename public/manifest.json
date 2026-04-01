@@ -1,0 +1,22 @@
+{
+  "name": "Minimalistu — Educație Financiară",
+  "short_name": "Minimalistu",
+  "description": "Instrumente gratuite și consultanță financiară pentru investitorul român",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F3EDE5",
+  "theme_color": "#7B2D50",
+  "lang": "ro",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

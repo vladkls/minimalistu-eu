@@ -62,6 +62,9 @@ export function Footer() {
           scop informativ și educațional și nu reprezintă sfaturi financiare
           și/sau recomandări de investiții.
         </p>
+        <p className="mt-4 text-center text-xs text-text-muted/40">
+          Ultima actualizare: Aprilie 2026
+        </p>
       </div>
     </footer>
   );
