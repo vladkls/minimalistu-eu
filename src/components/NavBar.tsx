@@ -45,6 +45,12 @@ export function NavBar() {
             Carte{" "}
             <span className="text-text-muted text-xs">↗</span>
           </a>
+          <Link
+            href="/xtb"
+            className="text-sm font-medium text-text hover:text-burgundy transition-colors"
+          >
+            XTB
+          </Link>
           <button
             onClick={openModal}
             className="inline-flex items-center px-5 py-2 bg-burgundy text-white text-sm font-semibold rounded-lg hover:bg-burgundy-light transition-colors cursor-pointer"
@@ -96,6 +102,13 @@ export function NavBar() {
           >
             Carte ↗
           </a>
+          <Link
+            href="/xtb"
+            onClick={() => setOpen(false)}
+            className="text-sm font-medium text-text"
+          >
+            XTB
+          </Link>
           <button
             onClick={() => {
               setOpen(false);
