@@ -4097,9 +4097,14 @@ function RandamentImobiliarTool({ presenter }) {
   const monthlyCashFlow = monthlyNetProfit - mortgagePayment;
 
   // Yields
+  const annualMortgagePayments = mortgagePayment * 12;
+  const annualCashFlow = annualNetProfit - annualMortgagePayments;
   const grossYield = propValue > 0 ? (annualGrossRent / propValue * 100) : 0;
-  const netYield = capitalInvested > 0 ? (annualNetProfit / capitalInvested * 100) : 0;
-  const totalYield = netYield + appreciation;
+  // Net yield = cap rate (always based on property value, financing-independent)
+  const netYield = propValue > 0 ? (annualNetProfit / propValue * 100) : 0;
+  // Cash-on-cash = actual return on YOUR invested capital (accounts for mortgage)
+  const cashOnCashYield = capitalInvested > 0 ? (annualCashFlow / capitalInvested * 100) : 0;
+  const totalYield = hasMortgage ? (cashOnCashYield + appreciation) : (netYield + appreciation);
   const yieldDrop = grossYield > 0 ? Math.round((1 - netYield / grossYield) * 100) : 0;
 
   // Per-euro breakdown
@@ -4163,7 +4168,8 @@ function RandamentImobiliarTool({ presenter }) {
   }, [monthlyRent, vacancyMonths, maintenanceFee, repairCost, renovationAmortized, insurance, taxProperty, deductionOn]);
 
   const gap = presenter ? 32 : 20;
-  const yieldColor = netYield < 4 ? T.red : netYield < 6 ? T.amber : T.green;
+  const displayYield = hasMortgage ? cashOnCashYield : netYield;
+  const yieldColor = displayYield < 0 ? T.red : displayYield < 4 ? T.red : displayYield < 6 ? T.amber : T.green;
 
   // Select element style
   const selectStyle = { padding: "8px 12px", border: `1px solid ${T.border}`, borderRadius: T.radiusXs, fontSize: presenter ? 14 : 12, fontFamily: T.font, color: T.text, background: T.white, cursor: "pointer", width: "100%", marginBottom: presenter ? 20 : 14 };
@@ -4272,7 +4278,8 @@ function RandamentImobiliarTool({ presenter }) {
           {/* 3A: Summary Cards */}
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <StatCard label="Randament brut" value={`${grossYield.toFixed(1)}%`} color={T.amber} bgColor={T.amberFaint} presenter={presenter} icon="📊" sub={`Chirie ${fmtK(annualGrossRent)}/an`} />
-            <StatCard label="Randament net" value={`${netYield.toFixed(1)}%`} color={yieldColor} bgColor={netYield < 4 ? T.redFaint : netYield < 6 ? T.amberFaint : T.greenFaint} presenter={presenter} icon="📉" sub={`Costurile mănâncă ${yieldDrop}%`} />
+            <StatCard label={hasMortgage ? "Randament net (cap rate)" : "Randament net"} value={`${netYield.toFixed(1)}%`} color={yieldColor} bgColor={netYield < 4 ? T.redFaint : netYield < 6 ? T.amberFaint : T.greenFaint} presenter={presenter} icon="📉" sub={`Costurile mănâncă ${yieldDrop}%`} />
+            {hasMortgage && <StatCard label="Cash-on-cash" value={`${cashOnCashYield.toFixed(1)}%`} color={cashOnCashYield >= 0 ? (cashOnCashYield < 4 ? T.amber : T.green) : T.red} bgColor={cashOnCashYield >= 0 ? T.greenFaint : T.redFaint} presenter={presenter} icon="💵" sub={`Randament pe capitalul tău (${fmtK(capitalInvested)})`} />}
             <StatCard label="Randament total" value={`${totalYield.toFixed(1)}%`} color={totalYield >= 6 ? T.green : T.amber} bgColor={totalYield >= 6 ? T.greenFaint : T.amberFaint} presenter={presenter} icon="📈" sub={`Include +${appreciation}% apreciere`} />
           </div>
 
@@ -4318,7 +4325,7 @@ function RandamentImobiliarTool({ presenter }) {
           {!hasMortgage && (
             <div style={{ padding: presenter ? "16px 20px" : "12px 16px", background: monthlyNetProfit > 0 ? T.greenFaint : T.redFaint, borderRadius: T.radiusSm }}>
               <div style={{ fontSize: presenter ? 13 : 11, color: T.textMuted, fontFamily: T.font, lineHeight: 1.5 }}>
-                Profit net: <strong style={{ color: monthlyNetProfit > 0 ? T.green : T.red }}>{fmt(monthlyNetProfit)}/lună</strong> — dar ai blocat {fmtK(propValue)} pentru un randament de {netYield.toFixed(1)}%.
+                Profit net: <strong style={{ color: monthlyNetProfit > 0 ? T.green : T.red }}>{fmt(monthlyNetProfit)}/lună</strong> — dar cash-on-cash returnul tău real e de {cashOnCashYield.toFixed(1)}%.
               </div>
             </div>
           )}
@@ -4376,7 +4383,7 @@ function RandamentImobiliarTool({ presenter }) {
               </thead>
               <tbody>
                 {[
-                  ["Randament net/an", `${netYield.toFixed(1)}%`, `${(etfReturn - 0.22).toFixed(1)}%`, `${bondsReturn}%`],
+                  ["Randament net/an", `${(hasMortgage ? cashOnCashYield : netYield).toFixed(1)}%`, `${(etfReturn - 0.22).toFixed(1)}%`, `${bondsReturn}%`],
                   ["Lichiditate", "Săpt-luni", "Secunde", "Zile"],
                   ["Efort/lună", rentalType === "airbnb" ? "~20h" : "~2h", "0h", "0h"],
                   ["Diversificare", "1 apart.", "3000+ comp.", "Stat român"],
