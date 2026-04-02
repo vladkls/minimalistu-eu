@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Footer } from "@/components/Footer";
 
 const XTB_LINK = "https://link-pso.xtb.com/pso/LiEke";
@@ -77,6 +78,16 @@ function Hero() {
   return (
     <section className="pt-16 pb-10">
       <div className="mx-auto max-w-[680px] px-5 text-center">
+        {/* XTB Logo */}
+        <Image
+          src="/xtb-logo.svg"
+          alt="XTB"
+          width={140}
+          height={42}
+          className="mx-auto mb-6"
+          priority
+        />
+
         {/* Badge */}
         <span className="inline-flex items-center px-3 py-1 bg-green text-white text-[11px] font-semibold rounded-full mb-6">
           {"Recomandat de Vlad Caluș · Minimalistu"}
@@ -170,15 +181,15 @@ function WhyXTB() {
     },
     {
       title: "Reglementat în UE",
-      desc: "XTB este reglementat de KNF (Polonia) și autorizat în toată Uniunea Europeană, inclusiv România.",
+      desc: "XTB este reglementat de KNF (Polonia) și autorizat în toată Uniunea Europeană. În România, XTB este înscris în registrele ASF.",
     },
     {
       title: "Platformă intuitivă",
       desc: "Aplicația mobilă și platforma web sunt printre cele mai ușor de folosit — ideale pentru începători.",
     },
     {
-      title: "Acțiuni fracționare",
-      desc: "Poți investi și cu €10 — nu trebuie să cumperi o acțiune întreagă. Perfect pentru DCA lunar.",
+      title: "Drepturi fracționate",
+      desc: "Dimensiunea minimă a ordinului: €10 la acțiuni, €1 la ETF-uri. Nu trebuie să cumperi o acțiune întreagă. Perfect pentru DCA lunar.",
     },
   ];
 
