@@ -14,7 +14,6 @@ function CopyCodeBox() {
     try {
       await navigator.clipboard.writeText(REFERRAL_CODE);
     } catch {
-      // Fallback for older browsers
       const ta = document.createElement("textarea");
       ta.value = REFERRAL_CODE;
       ta.style.position = "fixed";
@@ -41,7 +40,7 @@ function CopyCodeBox() {
           onClick={handleCopy}
           className="inline-flex items-center gap-1 px-3 py-1.5 bg-burgundy/10 text-burgundy text-xs font-semibold rounded-lg hover:bg-burgundy/20 transition-colors cursor-pointer"
         >
-          {copied ? "Copiat! \u2713" : "\uD83D\uDCCB Copiaz\u0103 codul"}
+          {copied ? "Copiat! ✓" : "📋 Copiază codul"}
         </button>
       </div>
     </div>
@@ -57,7 +56,7 @@ function CTAButton({ className = "" }: { className?: string }) {
       rel="noopener sponsored nofollow"
       className={`inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-amber text-burgundy-dark text-base font-bold rounded-xl hover:brightness-105 transition-all ${className}`}
     >
-      Deschide cont XTB \u2192
+      {"Deschide cont XTB →"}
     </a>
   );
 }
@@ -66,7 +65,7 @@ function CTAButton({ className = "" }: { className?: string }) {
 function TrustLine() {
   return (
     <p className="mt-4 text-xs text-text-muted text-center">
-      \u2713 Cont gratuit \u00B7 \u2713 F\u0103r\u0103 comisioane pe ac\u021Biuni \u00B7 \u2713 Reglementat UE
+      {"✓ Cont gratuit · ✓ Fără comisioane pe acțiuni · ✓ Reglementat UE"}
     </p>
   );
 }
@@ -80,15 +79,15 @@ function Hero() {
       <div className="mx-auto max-w-[680px] px-5 text-center">
         {/* Badge */}
         <span className="inline-flex items-center px-3 py-1 bg-green text-white text-[11px] font-semibold rounded-full mb-6">
-          Recomandat de Vlad Calu\u0219 \u00B7 Minimalistu
+          {"Recomandat de Vlad Caluș · Minimalistu"}
         </span>
 
         <h1 className="font-heading text-[28px] md:text-4xl text-burgundy leading-tight">
           Brokerul pe care-l folosesc eu.
         </h1>
         <p className="mt-4 text-base text-text-muted max-w-lg mx-auto leading-relaxed">
-          XTB este platforma prin care investesc personal. Dac\u0103 vrei s\u0103
-          \u00EEncepi \u0219i tu, folose\u0219te codul meu \u0219i prime\u0219ti un bonus educa\u021Bional.
+          XTB este platforma prin care investesc personal. Dacă vrei să
+          începi și tu, folosește codul meu și primești un bonus educațional.
         </p>
 
         <div className="mt-8">
@@ -107,22 +106,22 @@ function Hero() {
    ═══════════════════════════════════════════════════════════════ */
 function BonusMaterials() {
   const materials = [
-    { icon: "\uD83D\uDCCA", text: "Introducere \u00EEn investi\u021Bii" },
-    { icon: "\uD83D\uDCC8", text: "Cum func\u021Bioneaz\u0103 bursa" },
-    { icon: "\uD83D\uDCB0", text: "Tipuri de instrumente financiare" },
-    { icon: "\uD83C\uDF0D", text: "ETF-uri \u0219i diversificare global\u0103" },
-    { icon: "\uD83D\uDCC9", text: "Cum gestionezi riscul" },
-    { icon: "\uD83E\uDDEE", text: "Analiza fundamental\u0103" },
-    { icon: "\uD83D\uDCCB", text: "Cum cite\u0219ti un grafic" },
-    { icon: "\uD83D\uDD04", text: "Strategii de investi\u021Bii" },
-    { icon: "\uD83D\uDCB6", text: "Cum func\u021Bioneaz\u0103 ordinele la burs\u0103" },
-    { icon: "\uD83C\uDFE6", text: "Diferen\u021Ba dintre ac\u021Biuni \u0219i ETF-uri" },
-    { icon: "\uD83D\uDCF1", text: "Cum folose\u0219ti platforma XTB" },
-    { icon: "\uD83C\uDFAF", text: "Cum \u00EE\u021Bi setezi obiectivele" },
-    { icon: "\uD83D\uDEE1\uFE0F", text: "Protec\u021Bia investitorului \u00EEn UE" },
-    { icon: "\uD83D\uDCC5", text: "Investi\u021Bii pe termen lung" },
-    { icon: "\uD83D\uDCA1", text: "Gre\u0219eli comune de evitat" },
-    { icon: "\uD83D\uDE80", text: "Primii pa\u0219i ca investitor" },
+    { icon: "📊", text: "Introducere în investiții" },
+    { icon: "📈", text: "Cum funcționează bursa" },
+    { icon: "💰", text: "Tipuri de instrumente financiare" },
+    { icon: "🌍", text: "ETF-uri și diversificare globală" },
+    { icon: "📉", text: "Cum gestionezi riscul" },
+    { icon: "🧮", text: "Analiza fundamentală" },
+    { icon: "📋", text: "Cum citești un grafic" },
+    { icon: "🔄", text: "Strategii de investiții" },
+    { icon: "💶", text: "Cum funcționează ordinele la bursă" },
+    { icon: "🏦", text: "Diferența dintre acțiuni și ETF-uri" },
+    { icon: "📱", text: "Cum folosești platforma XTB" },
+    { icon: "🎯", text: "Cum îți setezi obiectivele" },
+    { icon: "🛡️", text: "Protecția investitorului în UE" },
+    { icon: "📅", text: "Investiții pe termen lung" },
+    { icon: "💡", text: "Greșeli comune de evitat" },
+    { icon: "🚀", text: "Primii pași ca investitor" },
   ];
 
   return (
@@ -130,12 +129,12 @@ function BonusMaterials() {
       <div className="mx-auto max-w-[680px] px-5">
         <div className="bg-card rounded-xl shadow-sm border border-border p-6 md:p-8">
           <h2 className="font-heading text-xl text-text mb-2">
-            \uD83C\uDF81 16 materiale educa\u021Bionale gratuite
+            {"🎁 16 materiale educaționale gratuite"}
           </h2>
           <p className="text-sm text-text-muted mb-6 leading-relaxed">
-            C\u00E2nd deschizi contul cu codul MINIMALISTU, prime\u0219ti acces la 16
-            resurse educa\u021Bionale despre investi\u021Bii — create de XTB pentru a te
-            ajuta s\u0103 \u00EEnve\u021Bi fundamentele.
+            Când deschizi contul cu codul MINIMALISTU, primești acces la 16
+            resurse educaționale despre investiții — create de XTB pentru a te
+            ajuta să înveți fundamentele.
           </p>
 
           <div className="grid grid-cols-2 gap-x-4 gap-y-3">
@@ -151,8 +150,8 @@ function BonusMaterials() {
           </div>
 
           <p className="mt-6 text-xs text-text-muted/60 leading-relaxed">
-            Materialele sunt disponibile automat \u00EEn contul t\u0103u XTB dup\u0103 ce
-            folose\u0219ti codul MINIMALISTU la \u00EEnregistrare.
+            Materialele sunt disponibile automat în contul tău XTB după ce
+            folosești codul MINIMALISTU la înregistrare.
           </p>
         </div>
       </div>
@@ -166,20 +165,20 @@ function BonusMaterials() {
 function WhyXTB() {
   const benefits = [
     {
-      title: "0% comision pe ac\u021Biuni",
-      desc: "Tranzac\u021Bionezi ac\u021Biuni \u0219i ETF-uri f\u0103r\u0103 comisioane, p\u00E2n\u0103 la un volum lunar de \u20AC100,000.",
+      title: "0% comision pe acțiuni",
+      desc: "Tranzacționezi acțiuni și ETF-uri fără comisioane, până la un volum lunar de €100,000.",
     },
     {
-      title: "Reglementat \u00EEn UE",
-      desc: "XTB este reglementat de KNF (Polonia) \u0219i autorizat \u00EEn toat\u0103 Uniunea European\u0103, inclusiv Rom\u00E2nia.",
+      title: "Reglementat în UE",
+      desc: "XTB este reglementat de KNF (Polonia) și autorizat în toată Uniunea Europeană, inclusiv România.",
     },
     {
-      title: "Platform\u0103 intuitiv\u0103",
-      desc: "Aplica\u021Bia mobil\u0103 \u0219i platforma web sunt printre cele mai u\u0219or de folosit — ideale pentru \u00EEncep\u0103tori.",
+      title: "Platformă intuitivă",
+      desc: "Aplicația mobilă și platforma web sunt printre cele mai ușor de folosit — ideale pentru începători.",
     },
     {
-      title: "Ac\u021Biuni frac\u021Bionare",
-      desc: "Po\u021Bi investi \u0219i cu \u20AC10 — nu trebuie s\u0103 cumperi o ac\u021Biune \u00EEntreag\u0103. Perfect pentru DCA lunar.",
+      title: "Acțiuni fracționare",
+      desc: "Poți investi și cu €10 — nu trebuie să cumperi o acțiune întreagă. Perfect pentru DCA lunar.",
     },
   ];
 
@@ -222,13 +221,13 @@ function HowToOpen() {
     },
     {
       num: "2",
-      title: "Completezi formularul de \u00EEnregistrare",
-      desc: "Dureaz\u0103 ~10 minute. Ai nevoie de buletin/pa\u0219aport \u0219i o adres\u0103 de email.",
+      title: "Completezi formularul de înregistrare",
+      desc: "Durează ~10 minute. Ai nevoie de buletin/pașaport și o adresă de email.",
     },
     {
       num: "3",
       title: "Introdu codul MINIMALISTU",
-      desc: "La pasul de referral, scrie codul MINIMALISTU ca s\u0103 prime\u0219ti cele 16 materiale educa\u021Bionale gratuit.",
+      desc: "La pasul de referral, scrie codul MINIMALISTU ca să primești cele 16 materiale educaționale gratuit.",
     },
   ];
 
@@ -236,7 +235,7 @@ function HowToOpen() {
     <section className="py-12 bg-card">
       <div className="mx-auto max-w-[680px] px-5">
         <h2 className="font-heading text-xl text-burgundy text-center mb-8">
-          Deschide cont \u00EEn 3 pa\u0219i
+          Deschide cont în 3 pași
         </h2>
 
         <div className="space-y-6">
@@ -267,7 +266,7 @@ function FinalCTA() {
     <section className="py-12">
       <div className="mx-auto max-w-[680px] px-5 text-center">
         <h2 className="font-heading text-2xl text-burgundy mb-6">
-          Gata s\u0103 \u00EEncepi?
+          {"Gata să începi?"}
         </h2>
 
         <CTAButton />
@@ -287,22 +286,22 @@ function Disclaimer() {
       <div className="mx-auto max-w-[680px] px-5">
         <div className="text-xs text-text-muted/60 leading-relaxed space-y-3">
           <p>
-            <strong className="text-text-muted">Disclaimer:</strong> Aceast\u0103
-            pagin\u0103 con\u021Bine un link de afiliere. Dac\u0103 deschizi un cont XTB prin
-            linkul de pe aceast\u0103 pagin\u0103, Minimalistu poate primi un comision de
-            la XTB, f\u0103r\u0103 niciun cost suplimentar pentru tine. Acest lucru nu
-            influen\u021Beaz\u0103 recomandarea — folosesc personal XTB ca broker principal.
+            <strong className="text-text-muted">Disclaimer:</strong> Această
+            pagină conține un link de afiliere. Dacă deschizi un cont XTB prin
+            linkul de pe această pagină, Minimalistu poate primi un comision de
+            la XTB, fără niciun cost suplimentar pentru tine. Acest lucru nu
+            influențează recomandarea — folosesc personal XTB ca broker principal.
           </p>
           <p>
-            Investi\u021Biile implic\u0103 riscuri. Valoarea investi\u021Biilor poate fluctua,
-            iar performan\u021Bele anterioare nu garanteaz\u0103 rezultate viitoare.
-            Asigur\u0103-te c\u0103 \u00EEn\u021Belegi riscurile \u00EEnainte de a investi. XTB este
-            reglementat de Autoritatea de Supraveghere Financiar\u0103 din Polonia
+            Investițiile implică riscuri. Valoarea investițiilor poate fluctua,
+            iar performanțele anterioare nu garantează rezultate viitoare.
+            Asigură-te că înțelegi riscurile înainte de a investi. XTB este
+            reglementat de Autoritatea de Supraveghere Financiară din Polonia
             (KNF).
           </p>
           <p>
-            Vlad Calu\u0219 nu este consilier financiar autorizat. Informa\u021Biile
-            prezentate au caracter educativ \u0219i informativ.
+            Vlad Caluș nu este consilier financiar autorizat. Informațiile
+            prezentate au caracter educativ și informativ.
           </p>
         </div>
       </div>
